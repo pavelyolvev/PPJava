@@ -1,18 +1,13 @@
 import java.util.*;
-import java.io.IOException;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 public class Main {
     static ArrayList<CollectionMethods> interAr = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
     static final String exit = "exit";
 
-    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
-    public static void menu() {
+
+    public static void menu() throws FilmCollection.FilmColException, TheaterCollection.ThColException {
         char input;
 
         while (true) {
@@ -34,14 +29,14 @@ public class Main {
     }
 
 
-    static public void main(String[] args){
+    static public void main(String[] args) throws FilmCollection.FilmColException, TheaterCollection.ThColException {
         menu();
 
     }
-    static void openFilmCollection() {
+    static void openFilmCollection() throws FilmCollection.FilmColException {
         String title = null;
-        int credits=-1;
-        ArrayList<Integer> duration= new ArrayList<>();
+        int credits = -1;
+        ArrayList<Integer> duration = new ArrayList<>();
 
 
         System.out.println("Film Collection opened. Type exit to leave");
@@ -49,44 +44,32 @@ public class Main {
 
         System.out.print("Input Title: ");
         String input = scanner.nextLine();
-        if(!exit.equals(input)){
+        if (!exit.equals(input)) {
             title = input;
 
         }
-        else return;
 
         System.out.print("Input Duration of credits: ");
         input = scanner.nextLine();
-        if(!exit.equals(input))
+        if (!exit.equals(input))
             credits = Integer.parseInt(input);
 
 
-        while (true){
-            System.out.print("Input duration for Film "+(duration.size()+1)+ ": ");
+        while (true) {
+            System.out.print("Input duration for Film " + (duration.size() + 1) + ": ");
             input = scanner.nextLine();
-            if(!exit.equals(input)) duration.add(Integer.parseInt(input));
+            if (!exit.equals(input)) duration.add(Integer.parseInt(input));
             else break;
         }
-        try {
-            if(credits == -1 || duration.size()==0 || title==null)
-                throw new FilmCollection.FilmColException("Not all data is entered");
-            interAr.add(new FilmCollection(title,credits,duration));
 
-        }catch (FilmCollection.FilmColException e) {
-            LOGGER.log(Level.SEVERE, "An exception occurred", e);
-            try {
-                FileHandler fileHandler = new FileHandler("myLogFile.log");
-                fileHandler.setFormatter(new SimpleFormatter());
-                LOGGER.addHandler(fileHandler);
-                LOGGER.log(Level.SEVERE, "An exception occurred", e);
-            } catch (IOException ex) {
-                LOGGER.log(Level.SEVERE, "Failed to write to log file", ex);
-            }
-        }
+        if (credits == -1 || duration.size() == 0 || title == null)
+            throw new FilmCollection.FilmColException("Not all data is entered");
+        interAr.add(new FilmCollection(title, credits, duration));
+
     }
 
 
-    static void openTheaterCollection() {
+    static void openTheaterCollection() throws TheaterCollection.ThColException {
         String title;
         int credits;
         ArrayList<Integer> duration= new ArrayList<>();
@@ -119,19 +102,9 @@ public class Main {
             else break;
         }
 
-        try {
+
             interAr.add(new TheaterCollection(title,credits,duration));
-        }catch (TheaterCollection.ThColException e) {
-            LOGGER.log(Level.SEVERE, "An exception occurred", e);
-            try {
-                FileHandler fileHandler = new FileHandler("myLogFile.log");
-                fileHandler.setFormatter(new SimpleFormatter());
-                LOGGER.addHandler(fileHandler);
-                LOGGER.log(Level.SEVERE, "An exception occurred", e);
-            } catch (IOException ex) {
-                LOGGER.log(Level.SEVERE, "Failed to write to log file", ex);
-            }
-        }
+
 
 
     }

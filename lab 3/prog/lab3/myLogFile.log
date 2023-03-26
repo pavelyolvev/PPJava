@@ -1,7 +1,2 @@
-мар. 23, 2023 6:00:56 PM Main openFilmCollection
+мар. 25, 2023 11:09:12 PM FilmCollection$FilmColException <init>
 SEVERE: An exception occurred
-FilmCollection$FilmColException: Not all data is entered
-	at Main.openFilmCollection(Main.java:72)
-	at Main.menu(Main.java:24)
-	at Main.main(Main.java:38)
-
