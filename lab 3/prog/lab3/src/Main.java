@@ -98,14 +98,11 @@ public class Main {
         while (true){
             System.out.print("Input duration for theatre show "+(duration.size()+1)+ ": ");
             input = scanner.nextLine();
-            if(!exit.equals(input)) duration.add(Integer.parseInt(input));
+            if(!exit.equals(input))
+                duration.add(Integer.parseInt(input));
             else break;
         }
-
-
             interAr.add(new TheaterCollection(title,credits,duration));
-
-
 
     }
 
