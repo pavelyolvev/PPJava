@@ -1,0 +1,55 @@
+.root
+{
+    -fx-background-color:#353737;
+    -fx-alignment:CENTER_LEFT;
+
+
+}
+
+.menu
+{
+
+    -fx-background-color:#867874;
+}
+
+.menuInter
+{
+    -fx-background-radius: 50px;
+    -fx-background-color:#735b5a;
+
+}
+.menuText
+{
+    -fx-font-family: Arial, sans-serif;
+    -fx-color: #000;
+}
+.controlBtn
+{
+
+    -fx-background-radius: 0px;
+    -fx-background-color:#735b5a;
+}
+#ctrl{
+    -fx-spacing: 5;
+}
+#lastbtn{
+    -fx-background-radius: 0 10 10 0;
+}
+#num
+{
+    -fx-padding: 0 0 0 10;
+    -fx-max-width:410;
+    -fx-background-radius: 0 20 20 0;
+    -fx-background-color:#6a6969;
+}
+#warn{
+    -fx-padding: 0 0 0 10;
+}
+#btnStrt{
+    -fx-background-radius: 0 10 10 0;
+    -fx-min-width: 140;
+}
+.texts
+{
+    -fx-text-fill: #fff;
+}
